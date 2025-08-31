@@ -9,13 +9,46 @@
       font-family: 'Arial', sans-serif;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
       background: #f7f7f7;
     }
+
+    /* Tela inicial */
+    #start-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #ff4d6d;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 200;
+    }
+    #start-screen h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    #start-btn {
+      padding: 1rem 2rem;
+      background: white;
+      color: #ff4d6d;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 0 15px rgba(255,255,255,0.6);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
     .container {
-      display: grid;
+      display: none; /* escondido até clicar */
       grid-template-columns: 1fr 2fr;
       max-width: 900px;
       margin: auto;
@@ -89,7 +122,6 @@
       padding-left: 1rem;
     }
 
-    /* Botão WhatsApp */
     .btn-whatsapp {
       display: inline-block;
       background: #ff4d6d;
@@ -105,16 +137,8 @@
       box-shadow: 0 0 15px rgba(255,77,109,0.5);
       transition: transform 0.2s;
     }
-    .btn-whatsapp:hover {
-      transform: scale(1.05);
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-      100% { transform: scale(1); }
-    }
 
-    /* Barra inferior com degradê */
+    /* Barra inferior */
     .scroll-bar {
       position: fixed;
       bottom: 0;
@@ -149,37 +173,27 @@
       50% { opacity: 0.5; }
     }
 
-    /* Música escondida */
-    audio {
-      display: none;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
-      .sidebar {
-        align-items: center;
-        text-align: center;
-      }
-    }
+    audio { display: none; }
   </style>
 </head>
 <body>
+  <!-- Tela inicial -->
+  <div id="start-screen">
+    <h1>Bem-vinda, Monike 💖</h1>
+    <button id="start-btn">👉 Aperte aqui 👈</button>
+  </div>
+
   <div class="container">
     <!-- LADO ESQUERDO -->
     <aside class="sidebar">
-      <!-- Sua foto -->
       <img src="eu.png" alt="Foto Pedro Cauã Nobre">
       <h2>Pedro Cauã Nobre</h2>
       <p>(mas pra vc, amor ❤️)</p>
-      <!-- Logo abaixo da frase entra o monike.png -->
       <img src="monike.png" alt="Monike" style="width: 300px; margin: 20px 0; border-radius: 12px;">
 
       <section>
         <h3>Sobre mim</h3>
         <p>Profissional em piadas ruins 🤡<br>
-          (É, eu sei que você tá rindo agr rs)<br>
            Atualmente faço programa (de computador, calma 😏).<br>
            Disponível em tempo integral só pra você ❤️.</p>
       </section>
@@ -193,8 +207,7 @@
         </ul>
       </section>
 
-      <!-- Música invisível -->
-      <audio autoplay loop>
+      <audio id="musica" loop>
         <source src="musica.mp3" type="audio/mpeg">
       </audio>
     </aside>
@@ -234,21 +247,26 @@
         </ul>
       </section>
 
-      <!-- BOTÃO WHATSAPP COM MENSAGEM PRÉVIA -->
       <a href="https://wa.me/5585998175354?text=Sim%2C%20eu%20aceito%20casar%20com%20você!" target="_blank" class="btn-whatsapp">
         Contratar Candidato ✅
       </a>
     </main>
   </div>
 
-  <!-- BARRA DEGRADE COM SETA -->
   <div class="scroll-bar" id="scroll-bar">
     <span>Role para baixo</span>
     <div class="arrow">⬇</div>
   </div>
 
   <script>
-    // Esconde a barra quando o usuário rolar
+    // Botão inicial
+    document.getElementById("start-btn").addEventListener("click", function() {
+      document.getElementById("musica").play();
+      document.getElementById("start-screen").style.display = "none";
+      document.querySelector(".container").style.display = "grid";
+    });
+
+    // Esconde a barra ao rolar
     window.addEventListener("scroll", function() {
       const scrollBar = document.getElementById("scroll-bar");
       if (window.scrollY > 50) {
