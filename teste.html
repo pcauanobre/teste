@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículo Amoroso</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: #f7f7f7;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .sidebar {
+      background: #2f2f2f;
+      color: white;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .sidebar img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ff4d6d;
+      margin-bottom: 1rem;
+    }
+    .sidebar h2 {
+      margin: 0.5rem 0;
+    }
+    .sidebar p {
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    .sidebar section {
+      margin-top: 2rem;
+      width: 100%;
+    }
+    .sidebar section h3 {
+      border-bottom: 1px solid #ff4d6d;
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+    .sidebar ul {
+      padding-left: 1rem;
+      margin: 0;
+      list-style: none;
+    }
+    .sidebar ul li::before {
+      content: "• ";
+      color: #ff4d6d;
+    }
+    .content {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .content section {
+      margin-bottom: 2rem;
+    }
+    .content h2 {
+      font-size: 1.2rem;
+      border-bottom: 2px solid #ff4d6d;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+    .content p, .content li {
+      font-size: 0.95rem;
+      margin: 0.5rem 0;
+    }
+    .content ul {
+      margin: 0;
+      padding-left: 1rem;
+    }
+
+    /* Botão WhatsApp */
+    .btn-whatsapp {
+      display: inline-block;
+      background: #ff4d6d;
+      color: white;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1rem;
+      margin: 1rem auto 3rem;
+      animation: pulse 1.5s infinite;
+      box-shadow: 0 0 15px rgba(255,77,109,0.5);
+      transition: transform 0.2s;
+    }
+    .btn-whatsapp:hover {
+      transform: scale(1.05);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    /* Barra inferior com degradê */
+    .scroll-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(to bottom, #e0e0e0, #444);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      z-index: 100;
+      cursor: pointer;
+    }
+    .scroll-bar span {
+      font-size: 1rem;
+      animation: pulseText 1.5s infinite;
+    }
+    .scroll-bar .arrow {
+      font-size: 2.5rem;
+      font-weight: bold;
+      animation: bounce 1.5s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+    @keyframes pulseText {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Música escondida */
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        align-items: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- LADO ESQUERDO -->
+    <aside class="sidebar">
+      <!-- Sua foto -->
+      <img src="eu.png" alt="Foto Pedro Cauã Nobre">
+      <h2>Pedro Cauã Nobre</h2>
+      <p>(mas pra vc, amor ❤️)</p>
+      <!-- Logo abaixo da frase entra o monike.png -->
+      <img src="monike.png" alt="Monike" style="width: 300px; margin: 20px 0; border-radius: 12px;">
+
+      <section>
+        <h3>Sobre mim</h3>
+        <p>Profissional em piadas ruins 🤡<br>
+          (É, eu sei que você tá rindo agr rs)<br>
+           Atualmente faço programa (de computador, calma 😏).<br>
+           Disponível em tempo integral só pra você ❤️.</p>
+      </section>
+
+      <section>
+        <h3>Hobbies</h3>
+        <ul>
+          <li>Mandar memes aleatórios</li>
+          <li>Cozinhar miojo gourmet</li>
+          <li>Maratonar série até você dormir</li>
+        </ul>
+      </section>
+
+      <!-- Música invisível -->
+      <audio autoplay loop>
+        <source src="musica.mp3" type="audio/mpeg">
+      </audio>
+    </aside>
+
+    <!-- LADO DIREITO -->
+    <main class="content">
+      <section>
+        <h2>Experiência Profissional</h2>
+        <ul>
+          <li><b>Especialista em Mandar Mensagens</b> — disponível 24h</li>
+          <li><b>Engenheiro de Sorrisos</b> — formação em fazer graça onde não tem</li>
+          <li><b>Barista Doméstico</b> — café na cama garantido todos os dias ☕</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Educação</h2>
+        <p><b>Bacharel em Amor da Sua Vida</b><br>
+        Universidade da Paixão (2025 – nosso casamento)</p>
+        <p><b>Técnico em Dar Atenção</b><br>
+        Escola da Paciência (2025 – ∞)</p>
+      </section>
+
+      <section>
+        <h2>Competências</h2>
+        <ul>
+          <li>✅ Fazer você sorrir em menos de 5s</li>
+          <li>✅ Cozinhar pra você</li>
+          <li>✅ Visão de futuro: a gente juntos 😉</li>
+          <li>✅ Academia 🏋️</li>
+          <li>✅ Faculdade de Tecnologia 💻</li>
+          <li>✅ Skatista gato 🛹</li>
+          <li>✅ Gamer 🎮</li>
+          <li>✅ Nerdzinho 🤓</li>
+          <li>✅ Toco guitarra 🎸</li>
+          <li>✅ Bom gosto musical 🎶</li>
+        </ul>
+      </section>
+
+      <!-- BOTÃO WHATSAPP COM MENSAGEM PRÉVIA -->
+      <a href="https://wa.me/5585998175354?text=Sim%2C%20eu%20aceito%20casar%20com%20você!" target="_blank" class="btn-whatsapp">
+        Contratar Candidato ✅
+      </a>
+    </main>
+  </div>
+
+  <!-- BARRA DEGRADE COM SETA -->
+  <div class="scroll-bar" id="scroll-bar">
+    <span>Role para baixo</span>
+    <div class="arrow">⬇</div>
+  </div>
+
+  <script>
+    // Esconde a barra quando o usuário rolar
+    window.addEventListener("scroll", function() {
+      const scrollBar = document.getElementById("scroll-bar");
+      if (window.scrollY > 50) {
+        scrollBar.style.display = "none";
+      } else {
+        scrollBar.style.display = "flex";
+      }
+    });
+  </script>
+</body>
+</html>
